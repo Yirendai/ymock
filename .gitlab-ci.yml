@@ -1,0 +1,11 @@
+commit build:
+    script:
+        - echo "test"  # do nothing
+
+Staging:
+    stage: deploy
+    script:
+        - mvn clean install 
+    only:
+        - /^release.+$/
+
