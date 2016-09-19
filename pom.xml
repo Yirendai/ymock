@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.yirendai.infra</groupId>
 	<artifactId>ymock</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>ymock</name>
 	<description>ymock</description>
 
