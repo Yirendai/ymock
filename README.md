@@ -16,7 +16,7 @@
 <dependency>
     <groupId>com.yirendai.infra</groupId>
     <artifactId>ymock-core</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency
 ```
 
@@ -43,7 +43,7 @@ MockUp<PointFacade> pointService = new MockUp<PointFacade>() {
         return pointResponseCommonResult;
     }
 };
- 
+
 DubboMock.set(pointService);
 ```
 
@@ -52,23 +52,23 @@ DubboMock.set(pointService);
 PointRequest pointRequest = ...;
 CommonResult<PointResponse> pointResponseCommonResult = new CommonResult<>();
 pointResponseCommonResult.setCode("2008");
- 
+
 PointFacade pointFacade = mock(PointFacade.class);
 when(pointFacade.execSubPoint(pointRequest)).thenReturn(pointResponseCommonResult);
- 
+
 DubboMock.set(pointFacade);
 ```
 
 ### 数据库数据准备
 * 原则：  
-1. 用真实的数据库，尽可能保证测试的有效性；  
-2. 测试时构建最小测试数据集，方便数据管理，同时兼顾性能；  
+      1. 用真实的数据库，尽可能保证测试的有效性；    
+      2. 测试时构建最小测试数据集，方便数据管理，同时兼顾性能；    
 * 方案：  
-   数据库分为Dev数据库和Test数据库，Dev数据库仅用于开发，Test用于单元测试和集成测试  
+      数据库分为Dev数据库和Test数据库，Dev数据库仅用于开发，Test用于单元测试和集成测试  
 * 实现原理：  
-1. 将Dev数据库的表或数据（仅同步必须的）同步到Test数据库；  
-2. 利用项目中已有的API对数据进行补充设置。   
-* 使用说明
+     1. 将Dev数据库的表或数据（仅同步必须的）同步到Test数据库；  
+     2. 利用项目中已有的API对数据进行补充设置。   
+* 使用说明  
 
 1. 配置
 ```
@@ -84,12 +84,12 @@ DubboMock.set(pointFacade);
 ```
     mysqlManager.syncTableSchema("table1"); // 设置需要同步表结构的表
     mysqlManager.syncTableData("table2");   // 设置需要同步表数据的表
-    
+
     mysqlManager.syncCase();     //同步指定表的结构和数据.
     //mysqlManager.syncSuit();   //同步所有的表结构，同步指定表的数据.
 ```
 
-### 测试数据准备(仅限JDK1.8+) 
+### 测试数据准备(仅限JDK1.8+)
 * 支持[mockjs](http://mockjs.com/)语法
 * 使用举例
 ```
